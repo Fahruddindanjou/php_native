@@ -1,2 +1,2 @@
 
-<h3 class="text-primary">Coba</h3>
+<h3 class="text-primary"><?= $data['nama']?></h3>

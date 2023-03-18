@@ -1,4 +1,4 @@
 <?php
 
 
-define('BASEURL', 'http://localhost:8888/');
+define('BASEURL', 'http://localhost/MVC_phpnative/public/');
