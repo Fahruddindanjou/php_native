@@ -13,26 +13,46 @@ class Mahasiswa_model{
     //         "email" => "asdasds@gmail.com"
     //     ]
     // ];
-    private $dbh; //database hadler
-    private $stmt; //statement
+    // private $dbh; //database hadler
+    // private $stmt; //statement
+
+    // public function __construct()
+    // {
+    //     //data source name
+    //     $dsn = 'mysql:host=localhost;dbname=phpmvc';
+
+    //     try{
+    //         $this->dbh = new PDO($dsn, 'root', '');
+    //     } catch(PDOException $e){
+    //         die($e->getMessage());
+    //     }
+    // }
+
+    private $table = 'mahasiswa';
+    private $db;
 
     public function __construct()
     {
-        //data source name
-        $dsn = 'mysql:host=localhost;dbname=phpmvc';
-
-        try{
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch(PDOException $e){
-            die($e->getMessage());
-        }
+        $this->db = new Database;
     }
 
     public function getAllMahasiswa()
     {
         //menjalankan query
-        $this->stmt = $this->dbh->prepare('SELECT * FROM mahasiswa');
-        $this->stmt->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $this->stmt = $this->dbh->prepare('SELECT * FROM mahasiswa');
+        // $this->stmt->execute();
+        // return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //mejalankan query dari core/Database
+        $this->db->query(' SELECT * FROM ' . $this->table);
+        return $this->db->resultSet();
+    }
+
+    // mengambil data berdasarkan id
+    public function getMahasiswaById($id)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
 }
