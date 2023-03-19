@@ -55,4 +55,5 @@ class Mahasiswa_model{
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+    
 }

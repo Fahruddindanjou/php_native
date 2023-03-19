@@ -69,4 +69,23 @@ class Database{
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function insert($table , $data )
+    {
+         $this->query("INSERT INTO $table VALUES($data)");
+        return $this->execute();
+    }
+
+    public function delete($table, $id)
+    {
+        $this->query("DELETE FROM $table WHERE id='$id'");
+        return $this->execute();
+    }
+
+    public function update($table, $data, $id)
+    {
+        $q = "UPDATE $table SET $data WHERE id='$id'";
+        $this->query($q);
+        return $this->execute();
+     }
 }

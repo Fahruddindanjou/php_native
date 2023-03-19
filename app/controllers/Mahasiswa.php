@@ -19,4 +19,40 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/detail',$data);
         $this->view('layouts/footer');
     }
+
+    public function tambah()
+    {
+        $nama = $_POST['nama'];
+        $nip = $_POST['nip'];
+        $email = $_POST['email'];
+        $db= new Database;
+        $db->insert('mahasiswa' , "'','$nama','$nip','$email'");
+        
+        header('location:../mahasiswa');
+        exit;
+    }
+
+    public function delete($id)
+    {
+        $db = new Database;
+        $db->delete('mahasiswa' , $id);
+
+        header('location:../mahasiswa');
+        exit;
+    }
+
+    public function update($id)
+    {
+        $db = new Database;
+        
+        
+        $nama = $_POST['nama'];
+        $nip = $_POST['nip'];
+        $email = $_POST['email'];
+
+        $db->update('mahasiswa' , "nama='$nama',nip='$nip',email='$email'" , $id);
+        header('location:../mahasiswa');
+        exit;
+
+    }
 }
