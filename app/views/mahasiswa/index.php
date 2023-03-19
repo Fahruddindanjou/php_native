@@ -1,6 +1,24 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-6">
+            <?php //Flasher::flash();?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <form action="<?= BASEURL; ?>mahasiswa/cari" method="post">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Cari Mahasiswa..." name="keyword" id="keyword" autocomplete="off">
+                <button class="btn btn-outline-secondary" type="submit" id="tombolCari">Cari</button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
             <div class="row mb-2">
                 <div class="d-flex justify-content-between">
                     <h3>Daftar Mahasiswa</h3>

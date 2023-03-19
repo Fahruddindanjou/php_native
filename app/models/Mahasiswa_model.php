@@ -55,5 +55,16 @@ class Mahasiswa_model{
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    // search
+    public function cariDataMahasiswa()
+    {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM mahasiswa WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+
+        return $this->db->resultSet();
+    }
     
 }
